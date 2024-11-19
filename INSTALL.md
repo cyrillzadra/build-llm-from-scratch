@@ -3,6 +3,8 @@
 
 ```
 wsl.exe --install Ubuntu-24.04
+wsl.exe --distribution Ubuntu-24.04
+
 curl -ssL https://magic.modular.com/cea77dde-f3fd-4e19-9129-ac33c7b3d502 | bash
 ```
 
