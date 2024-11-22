@@ -41,7 +41,7 @@ struct SimpleTokenizerV1:
             var stripped_item = str(item).strip()
             if len(stripped_item) > 0:  
                 result.append(stripped_item)
-        print(result.__str__())        
+        
         return result
 
 
