@@ -12,3 +12,11 @@ Mojo Documentation - https://docs.modular.com/mojo/manual/
 - use mojo language
 
 
+## cheatsheet
+
+how to add a new python module with magic cli
+
+```
+magic add tiktoken
+```
+

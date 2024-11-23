@@ -1,5 +1,7 @@
 from chapter02.simpletokenizerv1 import SimpleTokenizerV1
 from chapter02.simpletokenizerv2 import SimpleTokenizerV2
+from chapter02.simpletokenizervBPE import SimpleTokenizerBPE
+
 from chapter02.vocabulary import Vocabulary
 from collections import Dict, Set
 from testing import assert_true, assert_equal
@@ -54,10 +56,17 @@ fn test_vocab_with_special_tokens() raises -> object:
     assert_equal(len(vocab.vocab), 3, "vocab length should be 3")
     return 0
 
-    
+fn test_simple_tokenizervBPE() raises -> object:
+    var tokenizer = SimpleTokenizerBPE()
+    var encoded = tokenizer.encode("hello world")
+    assert_equal(len(encoded), 2, "encoded length should be 2")
+    assert_equal(encoded[0], 0, "first token should be 0 (hello)")
+    assert_equal(encoded[1], 1, "second token should be 1 (world)")
+    return 0
 
 fn main() raises:
     test["test_simple_tokenizerv1", test_simple_tokenizerv1]()
     test["test_simple_tokenizerv2", test_simple_tokenizerv2]()
     test["test_vocab", test_vocab]()
     test["test_vocab_with_special_tokens", test_vocab_with_special_tokens]()
+    test["test_simple_tokenizervBPE", test_simple_tokenizervBPE]()
