@@ -4,29 +4,29 @@ from collections import Dict
 # BPE (Byte Pair Encoding) Tokenizer
 struct SimpleTokenizerTikTokenBPE:
     var tiktoken: PythonObject
+    var tokenizer: PythonObject
     
     def __init__(inout self):
         self.tiktoken = Python.import_module("tiktoken")
+        self.tokenizer = self.tiktoken.get_encoding("gpt2")
 
     def encode(self, text: String) -> List[Int]:
-        print("SimpleTokenizerTikTokenBPE.encode")
-        var tokenizer = self.tiktoken.get_encoding("gpt2")
         var  python_set= Python.evaluate("set")
-        var special_tokens = python_set(['<|endoftext|>'])
-        print(special_tokens.__str__())
-        print(text)
-        var ids = tokenizer.encode(text, allowed_special=special_tokens)
-        return ids
+        var special_tokens = python_set()
+        special_tokens.add("<|endoftext|>")
+        var ids = self.tokenizer.encode(text, allowed_special=special_tokens)
+
+        var result = List[Int]()
+        for i in range(ids.__len__()):
+            var item = ids.__getitem__(i)
+            result.append(item)
+
+        return result
 
     def decode(self, ids: List[Int]) -> String:
-        #var py_ids = Python.list()
-        print("SimpleTokenizerTikTokenBPE.decode")
-        var py_ids = Python.evaluate("set")
-
+        var ids_set = Python.list()
         for i in ids:
-            py_ids.add(i[])
+            ids_set.append(i[])
 
-        var tokenizer = self.tiktoken.get_encoding("gpt2")
-        var word = tokenizer.decode(py_ids)
-        print(word)
+        var word = self.tokenizer.decode(ids_set)
         return word.__str__()

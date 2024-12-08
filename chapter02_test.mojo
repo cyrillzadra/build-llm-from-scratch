@@ -1,11 +1,15 @@
 from chapter02.simpletokenizerv1 import SimpleTokenizerV1
 from chapter02.simpletokenizerv2 import SimpleTokenizerV2
 from chapter02.simpletokenizervTikTokenBPE import SimpleTokenizerTikTokenBPE
-
+from chapter02.dataset import GPT2Dataset
 from chapter02.vocabulary import Vocabulary
+
 from collections import Dict, Set
 from testing import assert_true, assert_equal
 from python import Python
+
+
+
 fn test[name: String, test_fn: fn () raises -> object]() raises:
     var name_val = name  # FIXME(#26974): Can't pass 'name' directly.
     print("Test -> ", name_val, "...", end="")
@@ -58,16 +62,27 @@ fn test_vocab_with_special_tokens() raises -> object:
 
 fn test_simple_tokenizervTikTokenBPE() raises -> object:
     var tokenizer = SimpleTokenizerTikTokenBPE()
-    var encoded = tokenizer.encode("Hello world")
-    print(encoded.__str__())
+    var encoded = tokenizer.encode("hello world")
+    
     assert_equal(len(encoded), 2, "encoded length should be 2")
-    assert_equal(encoded[0], 0, "first token should be 0 (hello)")
-    assert_equal(encoded[1], 1, "second token should be 1 (world)")
+    assert_equal(encoded[0], 31373, "first token should be 0 (hello)")
+    assert_equal(encoded[1], 995, "second token should be 1 (world)")
+
+    var decoded = tokenizer.decode(encoded)
+    assert_equal(decoded, "hello world", "decoded should be hello world")
+
     return 0
 
+fn test_gpt2_dataset() raises -> object:
+    var tokenizer = SimpleTokenizerTikTokenBPE()
+    var dataset = GPT2Dataset("hello world portrait of Jack", tokenizer, 2, 1)
+    return 0
+
+
 fn main() raises:
-    test["test_simple_tokenizerv0", test_simple_tokenizerv1]()
+    test["test_simple_tokenizerv1", test_simple_tokenizerv1]()
     test["test_simple_tokenizerv2", test_simple_tokenizerv2]()
     test["test_vocab", test_vocab]()
     test["test_vocab_with_special_tokens", test_vocab_with_special_tokens]()
     test["test_simple_tokenizervTikTokenBPE", test_simple_tokenizervTikTokenBPE]()
+    test["test_gpt2_dataset", test_gpt2_dataset]()

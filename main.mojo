@@ -4,6 +4,7 @@ from collections import Set
 from collections import Dict
 
 from chapter02.simpletokenizerv1 import SimpleTokenizerV1
+from chapter02.simpletokenizervTikTokenBPE import SimpleTokenizerTikTokenBPE
 
 fn download_file() raises -> None:
     # mojo has no http client library, which supports tls.
@@ -13,7 +14,7 @@ fn download_file() raises -> None:
     var url = "https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch02/01_main-chapter-code/the-verdict.txt"
     var response = requests.get(url)
 
-    with open("output.txt", "w") as f:
+    with open("the-verdict.txt", "w") as f:
         try:
             f.write(str(response.text))
         except e:
@@ -22,7 +23,7 @@ fn download_file() raises -> None:
     print("File downloaded and saved successfully")
 
 fn read_file() raises -> String:
-    with open("output.txt", "r") as f:
+    with open("the-verdict.txt", "r") as f:
         return f.read()
 
 fn split_text(text: String) raises -> List[String]:
@@ -102,6 +103,11 @@ fn main():
 
         var decoded = tokenizer.decode(encoded)
         print(decoded)
+
+        var verdict_raw_text = read_file()
+        var tiktokenTokenizer = SimpleTokenizerTikTokenBPE()
+        var enc_text = tiktokenTokenizer.encode(verdict_raw_text)
+        print(len(enc_text))
 
     except e:
         print(e)
