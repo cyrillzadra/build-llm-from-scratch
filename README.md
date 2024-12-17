@@ -11,6 +11,10 @@ Mojo Documentation - https://docs.modular.com/mojo/manual/
 
 - use mojo language
 
+## possible todos
+
+- implement a mojo tokenizer (https://github.com/dorjeduck/minbpe.mojo)
+- 
 
 ## cheatsheet
 
