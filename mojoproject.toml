@@ -1,6 +1,6 @@
 [project]
 authors = ["Cyrill <cyrill.zadra@gmail.com>"]
-channels = ["conda-forge", "https://conda.modular.com/max", "https://repo.prefix.dev/mojo-community"]
+channels = ["conda-forge", "https://conda.modular.com/max", "https://repo.prefix.dev/mojo-community", "https://conda.modular.com/max-nightly/"]
 description = "Add a short description here"
 name = "build-llm-from-scratch"
 platforms = ["linux-64"]
@@ -9,7 +9,7 @@ version = "0.1.0"
 [tasks]
 
 [dependencies]
-max = ">=24.5.0,<25"
+max = ">=24.6.0,<25"
 requests = ">=2.32.3,<3"
-tiktoken = "0.7.0"
-regex = "2024.11.6"
+tiktoken = ">=0.8.0,<0.9"
+regex = ">=2024.11.6,<2025"

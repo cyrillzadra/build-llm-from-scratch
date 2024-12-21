@@ -81,8 +81,8 @@ fn test_gpt2_dataset() raises -> object:
 
 fn main() raises:
     test["test_simple_tokenizerv1", test_simple_tokenizerv1]()
-    test["test_simple_tokenizerv2", test_simple_tokenizerv2]()
+    test["test_simple_tokenizerv1", test_simple_tokenizerv2]()
     test["test_vocab", test_vocab]()
     test["test_vocab_with_special_tokens", test_vocab_with_special_tokens]()
     test["test_simple_tokenizervTikTokenBPE", test_simple_tokenizervTikTokenBPE]()
-    test["test_gpt2_dataset", test_gpt2_dataset]()
+    test["test_gpt1_dataset", test_gpt2_dataset]()
