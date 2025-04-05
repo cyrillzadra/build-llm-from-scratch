@@ -1,13 +1,14 @@
 
 from python import Python, PythonObject
 from collections import Dict
+from utils import StringSlice
 
 struct SimpleTokenizerV1:
     var re: PythonObject
     var str_to_int: Dict[String, Int]
     var int_to_str: Dict[Int, String]
 
-    def __init__(inout self, vocab: Dict[String, Int]):
+    def __init__(out self, vocab: Dict[String, Int]): 
         self.re = Python.import_module("re")
         self.str_to_int = vocab
 
@@ -38,9 +39,9 @@ struct SimpleTokenizerV1:
         
         for i in range(preprocessed.__len__()):
             var item = preprocessed.__getitem__(i)
-            var stripped_item = str(item).strip()
+            var stripped_item = String(item).strip()
             if len(stripped_item) > 0:  
-                result.append(stripped_item)
+                result.append(String(stripped_item))
         
         return result
 

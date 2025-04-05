@@ -5,7 +5,7 @@ from python import Python
 
 struct GPT2Dataset:
 
-    def __init__(inout self, text: String, tokenizer: SimpleTokenizerTikTokenBPE, max_length: Int, stride: Int):
+    def __init__(out self, text: String, tokenizer: SimpleTokenizerTikTokenBPE, max_length: Int, stride: Int):
         var pytorch = Python.import_module("pytorch")
 
         var tensor = pytorch.tensor([1, 2, 3, 4, 5])
@@ -19,8 +19,8 @@ struct GPT2Dataset:
         #     self.input_ids.append(torch.tensor(input_chunk))
         #     self.target_ids.append(torch.tensor(target_chunk))
 
-        var tensor = Tensor[DType.float32](TensorShape(2, 2))
-        print(tensor)
+        #var tensor = Tensor[DType.float32](TensorShape(2, 2))
+        #print(tensor)
         for i in range(0, len(token_ids) - max_length, stride):
             print(token_ids[i])
             var input_chunk = Span(token_ids)[i:i + max_length]

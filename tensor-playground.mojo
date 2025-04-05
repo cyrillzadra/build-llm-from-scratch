@@ -33,12 +33,9 @@ fn main() raises:
     var tensor2 = Tensor[DType.float32](TensorSpec(DType.float32, 2, 2))
     tensor2[Index(1, 1)] = 1.0
     print(tensor2)
-    print(tensor * tensor2)
 
      
-    var test_list = List[Int](1, 2, 3, 4, 5)
-
-    
+    var test_list = List[Int](1, 2, 3, 4, 5)    
 
     var slice = Span(test_list)[3:4]
     print(slice._len)
@@ -49,6 +46,5 @@ fn main() raises:
     print(py_tensor)
 
 
-
-
+   
 

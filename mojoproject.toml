@@ -9,9 +9,8 @@ version = "0.1.0"
 [tasks]
 
 [dependencies]
-max = ">=24.6.0,<25"
+max = ">=25.2.0,<26"
 requests = ">=2.32.3,<3"
-tiktoken = ">=0.8.0,<0.9"
+tiktoken = ">=0.9.0,<0.10"
 regex = ">=2024.11.6,<2025"
-pytorch = ">=2.5.1,<3"
-mkl = ">=2024.2.2,<2025"
+pytorch = ">=2.6.0,<3"

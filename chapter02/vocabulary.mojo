@@ -6,7 +6,7 @@ struct Vocabulary:
     var vocab: Dict[String, Int]
     var raw_vocab: String
 
-    fn __init__(inout self, raw_vocab: String, special_tokens: Set[String] = Set[String]()):
+    fn __init__(out self, raw_vocab: String, special_tokens: Set[String] = Set[String]()):
         self.raw_vocab = raw_vocab
         try:
             self.vocab = Dict[String, Int]()
@@ -38,9 +38,9 @@ struct Vocabulary:
         
         for i in range(tokens.__len__()):
             var item = tokens.__getitem__(i)
-            var stripped_item = str(item).strip()
+            var stripped_item = String(item).strip()
             if len(stripped_item) > 0:  
-                result.append(stripped_item)
+                result.append(String(stripped_item))
 
         return result
 

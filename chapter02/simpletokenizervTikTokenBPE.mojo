@@ -6,7 +6,7 @@ struct SimpleTokenizerTikTokenBPE:
     var tiktoken: PythonObject
     var tokenizer: PythonObject
     
-    def __init__(inout self):
+    def __init__(out self):
         self.tiktoken = Python.import_module("tiktoken")
         self.tokenizer = self.tiktoken.get_encoding("gpt2")
 
