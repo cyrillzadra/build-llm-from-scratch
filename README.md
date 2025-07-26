@@ -31,4 +31,3 @@ libblas = { version = ">=3.9.0,<4", build = "*mkl" }
 Unhandled exception caught during execution: libmkl_intel_lp64.so.2: cannot open shared object file: No such file or directory
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.magic/envs/default/lib
-✨ Pixi task (test_02 in default): mojo chapter02_test.mojo

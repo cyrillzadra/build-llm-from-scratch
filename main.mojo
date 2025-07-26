@@ -16,7 +16,7 @@ fn download_file() raises -> None:
 
     with open("the-verdict.txt", "w") as f:
         try:
-            f.write(str(response.text))
+            f.write(String(response.text))
         except e:
             print(e)
 
@@ -28,15 +28,15 @@ fn read_file() raises -> String:
 
 fn split_text(text: String) raises -> List[String]:
     var re = Python.import_module("re")
-    var tokens = re.split(r'([,.:;?_!"()\']|--|\s)', text) 
+    var tokens = re.split(r'([,.:;?_!"()\']|--|\s)', text)
     var result = List[String]()
-    
+
     for i in range(tokens.__len__()):
         var item = tokens.__getitem__(i)
-        var stripped_item = str(item).strip()
-        if len(stripped_item) > 0:  
-            result.append(stripped_item)
-    
+        var stripped_item = String(item).strip()
+        if len(stripped_item) > 0:
+            result.append(String(stripped_item))
+
     return result
 
 def print_list(list: List[String]):
@@ -45,7 +45,7 @@ def print_list(list: List[String]):
 def print_set(set: Set[String], count: Int):
     var counter = 0
     for item in set:
-        print(item[], end=",")
+        print(item, end=",")
         counter += 1
         if counter > count:
             break
@@ -55,15 +55,15 @@ def print_set(set: Set[String], count: Int):
 fn create_dictionary(tokens: List[String]) -> Set[String]:
     var sorted_token_set = Set[String]()
     for t in range(len(tokens)):
-        sorted_token_set.add(str(tokens[t]))
+        sorted_token_set.add(String(tokens[t]))
     return sorted_token_set^
 
 fn create_vocabulary(tokens: Set[String]) -> Dict[String, Int]:
     var vocabulary = Dict[String, Int]()
     var counter = 0
     for t in tokens:
-        vocabulary[str(t[])] = counter
-        counter += 1    
+        vocabulary[String(t)] = counter
+        counter += 1
     return vocabulary
 
 fn main():
@@ -97,7 +97,7 @@ fn main():
         print("tokenizer created")
         print(vocabulary['Jack'])
 
-        var encoded = tokenizer.encode(""""It's the last he painted, you know," 
+        var encoded = tokenizer.encode(""""It's the last he painted, you know,"
        Mrs. Gisburn said with pardonable pride.""")
         print(encoded.__str__())
 
@@ -111,7 +111,3 @@ fn main():
 
     except e:
         print(e)
-
-   
-
-

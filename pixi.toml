@@ -25,7 +25,7 @@ cuda = { features = ["cuda"] }
 default = { features = ["cuda"] }
 
 [tasks]
-start = "mojo main.mojo"
+main = "mojo main.mojo"
 
 test_02 = "mojo chapter02_test.mojo"
 
