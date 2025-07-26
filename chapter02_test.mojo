@@ -10,7 +10,7 @@ from python import Python
 
 
 
-fn test[name: String, test_fn: fn () raises -> object]() raises:
+fn test[name: String, test_fn: fn () raises]() raises:
     var name_val = name  # FIXME(#26974): Can't pass 'name' directly.
     print("Test -> ", name_val, "...", end="")
     try:
@@ -21,7 +21,7 @@ fn test[name: String, test_fn: fn () raises -> object]() raises:
     print("PASS ")
 
 
-fn test_simple_tokenizerv1() raises -> object:
+fn test_simple_tokenizerv1() raises:
     var vocab = Dict[String, Int]()
     vocab["hello"] = 0
     vocab["world"] = 1
@@ -30,9 +30,8 @@ fn test_simple_tokenizerv1() raises -> object:
     assert_equal(len(encoded), 2, "encoded length should be 2")
     assert_equal(encoded[0], 0, "first token should be 0 (hello)")
     assert_equal(encoded[1], 1, "second token should be 1 (world)")
-    return 0
 
-fn test_simple_tokenizerv2() raises -> object:
+fn test_simple_tokenizerv2() raises:
     var vocab = Dict[String, Int]()
     vocab["hello"] = 0
     vocab["world"] = 1
@@ -43,27 +42,26 @@ fn test_simple_tokenizerv2() raises -> object:
     assert_equal(encoded[0], 0, "first token should be 0 (hello)")
     assert_equal(encoded[1], 2, "second token should be 2 (unk)")
     assert_equal(encoded[2], 1, "third token should be 1 (world)")
-    return 0
 
-fn test_vocab() raises -> object:
+fn test_vocab() raises:
     var vocab = Vocabulary("hello world")
     assert_equal(vocab.vocab['hello'], 0, "hello should be 0")
     assert_equal(vocab.vocab['world'], 1, "world should be 1")
     assert_equal(len(vocab.vocab), 2, "vocab length should be 2")
-    return 0
 
-fn test_vocab_with_special_tokens() raises -> object:
+
+fn test_vocab_with_special_tokens() raises:
     var vocab = Vocabulary("hello world", Set[String]("|unk|"))
     assert_equal(vocab.vocab['hello'], 0, "hello should be 0")
-    assert_equal(vocab.vocab['world'], 1, "world should be 1") 
+    assert_equal(vocab.vocab['world'], 1, "world should be 1")
     assert_equal(vocab.vocab['|unk|'], 2, "|unk| should be 2")
     assert_equal(len(vocab.vocab), 3, "vocab length should be 3")
-    return 0
 
-fn test_simple_tokenizervTikTokenBPE() raises -> object:
+
+fn test_simple_tokenizervTikTokenBPE() raises:
     var tokenizer = SimpleTokenizerTikTokenBPE()
     var encoded = tokenizer.encode("hello world")
-    
+
     assert_equal(len(encoded), 2, "encoded length should be 2")
     assert_equal(encoded[0], 31373, "first token should be 0 (hello)")
     assert_equal(encoded[1], 995, "second token should be 1 (world)")
@@ -71,18 +69,16 @@ fn test_simple_tokenizervTikTokenBPE() raises -> object:
     var decoded = tokenizer.decode(encoded)
     assert_equal(decoded, "hello world", "decoded should be hello world")
 
-    return 0
 
-fn test_gpt2_dataset() raises -> object:
+fn test_gpt2_dataset() raises:
     var tokenizer = SimpleTokenizerTikTokenBPE()
     var dataset = GPT2Dataset("hello world portrait of Jack", tokenizer, 2, 1)
-    return 0
 
 
 fn main() raises:
-    #test["test_simple_tokenizerv1", test_simple_tokenizerv1]()
-    #test["test_simple_tokenizerv1", test_simple_tokenizerv2]()
-    #test["test_vocab", test_vocab]()
-    #test["test_vocab_with_special_tokens", test_vocab_with_special_tokens]()
-    #test["test_simple_tokenizervTikTokenBPE", test_simple_tokenizervTikTokenBPE]()
-    test["test_gpt1_dataset", test_gpt2_dataset]()
+    test["test_simple_tokenizerv1", test_simple_tokenizerv1]()
+    test["test_simple_tokenizerv1", test_simple_tokenizerv2]()
+    test["test_vocab", test_vocab]()
+    test["test_vocab_with_special_tokens", test_vocab_with_special_tokens]()
+    test["test_simple_tokenizervTikTokenBPE", test_simple_tokenizervTikTokenBPE]()
+#    test["test_gpt1_dataset", test_gpt2_dataset]()

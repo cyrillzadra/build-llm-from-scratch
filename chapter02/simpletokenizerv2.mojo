@@ -12,7 +12,7 @@ struct SimpleTokenizerV2:
 
         var tmp_int_to_str = Dict[Int, String]()
         for e in vocab.items():
-            tmp_int_to_str[e[].value] = e[].key
+            tmp_int_to_str[e.value] = e.key
         self.int_to_str = tmp_int_to_str
 
 
@@ -20,8 +20,8 @@ struct SimpleTokenizerV2:
         var preprocessed = self.__split_text__(text)
         var ids = List[Int]()
         for s in preprocessed:
-            if s[] in self.str_to_int:
-                ids.append(self.str_to_int[s[]])
+            if s in self.str_to_int:
+                ids.append(self.str_to_int[s])
             else:
                 ids.append(self.str_to_int["|unk|"])
         return ids
@@ -37,11 +37,11 @@ struct SimpleTokenizerV2:
         var preprocessed = self.re.split(r'([,.?_!"()\']|--|\s)', text)
 
         var result = List[String]()
-        
+
         for i in range(preprocessed.__len__()):
             var item = preprocessed.__getitem__(i)
             var stripped_item = String(item).strip()
-            if len(stripped_item) > 0:  
+            if len(stripped_item) > 0:
                 result.append(String(stripped_item))
-        
+
         return result

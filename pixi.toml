@@ -1,0 +1,40 @@
+[project]
+authors = ["Cyrill <cyrill.zadra@gmail.com>"]
+channels = [
+    "conda-forge",
+    "https://repo.prefix.dev/mojo-community",
+    "https://conda.modular.com/max-nightly/",
+]
+description = "Add a short description here"
+name = "build-llm-from-scratch"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[feature.cuda]
+system-requirements = { cuda = "12" }
+channels = ["nvidia"]
+
+[feature.cuda.dependencies]
+cuda-toolkit = "12.*" # for compute-sanitizer etc.
+
+[feature.cuda.pypi-dependencies]
+torch = { version = "==2.7.1", index = "https://download.pytorch.org/whl/cu128" }
+
+[environments]
+cuda = { features = ["cuda"] }
+default = { features = ["cuda"] }
+
+[tasks]
+start = "mojo main.mojo"
+
+test_02 = "mojo chapter02_test.mojo"
+
+[dependencies]
+max = ">=25.4.0,<26"
+
+## python dependencies
+python = ">=3.10,<3.13"
+requests = ">=2.32.3,<3"
+tiktoken = ">=0.9.0,<0.10"
+regex = ">=2024.11.6,<2025"
+#pytorch = ">=2.6.0,<3"

@@ -5,7 +5,7 @@ from collections import Dict
 struct SimpleTokenizerTikTokenBPE:
     var tiktoken: PythonObject
     var tokenizer: PythonObject
-    
+
     def __init__(out self):
         self.tiktoken = Python.import_module("tiktoken")
         self.tokenizer = self.tiktoken.get_encoding("gpt2")
@@ -19,14 +19,14 @@ struct SimpleTokenizerTikTokenBPE:
         var result = List[Int]()
         for i in range(ids.__len__()):
             var item = ids.__getitem__(i)
-            result.append(item)
+            result.append(Int(item))
 
         return result
 
     def decode(self, ids: List[Int]) -> String:
         var ids_set = Python.list()
         for i in ids:
-            ids_set.append(i[])
+            ids_set.append(i)
 
         var word = self.tokenizer.decode(ids_set)
-        return word.__str__()
+        return String(word.__str__())

@@ -20,28 +20,26 @@ struct Vocabulary:
 
         var sorted_token_set = Set[String]()
         for w in words:
-            sorted_token_set.add(w[])
+            sorted_token_set.add(w)
         for s in special_tokens:
-            sorted_token_set.add(s[])
+            sorted_token_set.add(s)
 
         var counter = 0
         for t in sorted_token_set:
-            vocab[t[]] = counter
+            vocab[t] = counter
             counter += 1
 
         return vocab
 
     fn __split_text__(self, text: String) raises -> List[String]:
         var re = Python.import_module("re")
-        var tokens = re.split(r'([,.:;?_!"()\']|--|\s)', text) 
+        var tokens = re.split(r'([,.:;?_!"()\']|--|\s)', text)
         var result = List[String]()
-        
+
         for i in range(tokens.__len__()):
             var item = tokens.__getitem__(i)
             var stripped_item = String(item).strip()
-            if len(stripped_item) > 0:  
+            if len(stripped_item) > 0:
                 result.append(String(stripped_item))
 
         return result
-
-
