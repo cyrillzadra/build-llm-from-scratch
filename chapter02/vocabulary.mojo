@@ -29,7 +29,7 @@ struct Vocabulary:
             vocab[t] = counter
             counter += 1
 
-        return vocab
+        return vocab.copy()
 
     fn __split_text__(self, text: String) raises -> List[String]:
         var re = Python.import_module("re")
@@ -42,4 +42,4 @@ struct Vocabulary:
             if len(stripped_item) > 0:
                 result.append(String(stripped_item))
 
-        return result
+        return result.copy()

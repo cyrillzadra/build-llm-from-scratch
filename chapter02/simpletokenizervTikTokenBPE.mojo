@@ -21,7 +21,7 @@ struct SimpleTokenizerTikTokenBPE:
             var item = ids.__getitem__(i)
             result.append(Int(item))
 
-        return result
+        return result.copy()
 
     def decode(self, ids: List[Int]) -> String:
         var ids_set = Python.list()

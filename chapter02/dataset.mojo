@@ -1,15 +1,10 @@
 from chapter02.simpletokenizervTikTokenBPE import SimpleTokenizerTikTokenBPE
 from max.tensor import Tensor, TensorShape
 from memory.span import Span
-from python import Python
 
 struct GPT2Dataset:
 
     def __init__(out self, text: String, tokenizer: SimpleTokenizerTikTokenBPE, max_length: Int, stride: Int):
-        var pytorch = Python.import_module("pytorch")
-
-        var tensor = pytorch.tensor([1, 2, 3, 4, 5])
-        print(tensor)
 
         var token_ids = tokenizer.encode(text)
 
