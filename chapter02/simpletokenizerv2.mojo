@@ -29,7 +29,7 @@ struct SimpleTokenizerV2:
     def decode(self, ids: List[Int]) -> String:
         var words = List[String]()
         for i in ids:
-            var word = self.int_to_str[i[]]
+            var word = self.int_to_str[i]
             words.append(word)
         return " ".join(words)
 
