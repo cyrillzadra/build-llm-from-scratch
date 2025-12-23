@@ -11,7 +11,7 @@ platforms = ["linux-64"]
 version = "0.1.0"
 
 [feature.cuda]
-system-requirements = { cuda = "12" }
+system-requirements = { cuda = "13" }
 channels = ["nvidia"]
 
 [feature.cuda.dependencies]
@@ -31,9 +31,7 @@ test_02 = "mojo test_chapter02.mojo"
 
 [dependencies]
 max = ">=26.1.0.dev2025122017,<27"
-python = ">=3.10,<3.15"
+modular = ">=26.1.0.dev2025122017,<27"
+python = ">=3.11,<3.14"
 requests = ">=2.32.5,<3"
 tiktoken = ">=0.12.0,<0.13"
-regex = ">=2025.11.3,<2026"
-modular = ">=26.1.0.dev2025122017,<27"
-pytorch = ">=2.7.1,<3"
