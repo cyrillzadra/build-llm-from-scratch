@@ -6,6 +6,7 @@ from collections import Dict
 from chapter02.simpletokenizerv1 import SimpleTokenizerV1
 from chapter02.simpletokenizerv2 import SimpleTokenizerV2
 from chapter02.simpletokenizervTikTokenBPE import SimpleTokenizerTikTokenBPE
+from chapter02.dataset import GPT2Dataset
 
 fn download_file() raises -> None:
     # mojo has no http client library, which supports tls.
@@ -112,6 +113,11 @@ fn main():
         for i in range(len(enc_text)):
             print(tiktokenTokenizer.decode([enc_text[i]]))
         print(tiktokenTokenizer.decode(enc_text))
+
+
+        print("#### GPTDatasetV1 #####")
+        var gptDataset = GPT2Dataset(verdict_raw_text, tiktokenTokenizer, 4, 1)
+       # print(gptDataset)
 
     except e:
         print(e)

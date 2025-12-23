@@ -2,6 +2,8 @@
 
 ## references
 
+https://llm.modular.com/introduction.html
+
 Book -  https://livebook.manning.com/book/build-a-large-language-model-from-scratch
 Github - https://github.com/rasbt/LLMs-from-scratch
 

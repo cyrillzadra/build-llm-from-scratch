@@ -17,8 +17,8 @@ channels = ["nvidia"]
 [feature.cuda.dependencies]
 cuda-toolkit = ">=12.9.1,<13" # for compute-sanitizer etc.
 
-#[feature.cuda.pypi-dependencies]
-#torch = { version = "==2.7.1", index = "https://download.pytorch.org/whl/cu128" }
+[feature.cuda.pypi-dependencies]
+torch = { version = "==2.7.1", index = "https://download.pytorch.org/whl/cu128" }
 
 [environments]
 cuda = { features = ["cuda"] }
@@ -31,9 +31,9 @@ test_02 = "mojo test_chapter02.mojo"
 
 [dependencies]
 max = ">=26.1.0.dev2025122017,<27"
-python = ">=3.14.2,<3.15"
+python = ">=3.10,<3.15"
 requests = ">=2.32.5,<3"
 tiktoken = ">=0.12.0,<0.13"
 regex = ">=2025.11.3,<2026"
 modular = ">=26.1.0.dev2025122017,<27"
-#pytorch = ">=2.7.1,<3"
+pytorch = ">=2.7.1,<3"
